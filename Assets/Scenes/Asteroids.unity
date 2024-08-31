@@ -861,6 +861,9 @@ MonoBehaviour:
   scoreText: {fileID: 1678883421}
   asteroidObj: {fileID: 72719480}
   youWinText: {fileID: 412570075}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,7 +1363,7 @@ GameObject:
   - component: {fileID: 1059741285}
   - component: {fileID: 1059741284}
   - component: {fileID: 1059741288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

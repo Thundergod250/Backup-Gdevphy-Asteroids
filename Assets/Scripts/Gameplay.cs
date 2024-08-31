@@ -13,6 +13,7 @@ public class Gameplay : MonoBehaviour
     private Vector2 camBounds;
     [SerializeField] private GameObject asteroidObj;
     [SerializeField] private GameObject youWinText;
+    public LayerMask playerLayer;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class Gameplay : MonoBehaviour
     }
     private void Update()
     {
-        if (score >= 50)
+        if (score >= 100)
         {
             Time.timeScale = 0;
             youWinText.SetActive(true);
@@ -38,7 +39,7 @@ public class Gameplay : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CO_SpawnAsteroids(2)); 
+        StartCoroutine(CO_SpawnAsteroids(1)); 
     }
 
     IEnumerator CO_SpawnAsteroids(int interval)
@@ -46,7 +47,9 @@ public class Gameplay : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(interval);
-            Instantiate(asteroidObj, new Vector2(Random.Range(-camBounds.x, camBounds.x), Random.Range(-camBounds.y, camBounds.y)), Quaternion.identity).SetActive(true);
+            Vector3 spawnPoint = new Vector2(Random.Range(-camBounds.x, camBounds.x), Random.Range(-camBounds.y, camBounds.y));
+            if (!Physics2D.OverlapCircle(spawnPoint, 2f, playerLayer))
+                Instantiate(asteroidObj, spawnPoint, Quaternion.identity).SetActive(true);
         }
     }
 

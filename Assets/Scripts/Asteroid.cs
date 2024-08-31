@@ -67,10 +67,10 @@ public class Asteroid : MonoBehaviour
                     GameObject _mini = Instantiate(gameObject, transform.position, Quaternion.identity);
                     _mini.transform.localScale = new Vector2(1.25f, 1.25f);
                 }
-                Gameplay.score -= 2;
+                Gameplay.score -= 1;
             }
             Destroy(gameObject);
-            Gameplay.score += 3; 
+            Gameplay.score += 2; 
         }
     }
 
